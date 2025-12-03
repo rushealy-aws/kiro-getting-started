@@ -1,4 +1,4 @@
-# Getting Started with Kiro CLI and MCP Servers
+# Getting Started with Kiro CLI and AWS MCP Servers
 
 ## Overview
 
@@ -7,16 +7,13 @@ Kiro is an AI assistant built by AWS that runs locally via CLI and can be extend
 This guide covers:
 - Installing Kiro CLI
 - Setting up AWS Documentation and AWS Knowledge MCP servers
-- Setting up Brave Search MCP server
 - Basic usage patterns
 
 ## Prerequisites
 
 - macOS, Linux, or Windows with WSL2
 - Python 3.8+ (for MCP servers)
-- Node.js 18+ (for some MCP servers)
 - AWS Account (for AWS-specific features)
-- Brave Search API key (for web search)
 
 ## Part 1: Install Kiro CLI
 
@@ -85,21 +82,6 @@ cd aws-knowledge-mcp-server
 pip install -e .
 ```
 
-### Brave Search MCP Server
-
-This server enables web search capabilities.
-
-```bash
-cd ~/.mcp-servers
-
-# Install via npm
-npm install -g @modelcontextprotocol/server-brave-search
-
-# Get your Brave Search API key
-# Visit: https://brave.com/search/api/
-# Sign up for a free account and generate an API key
-```
-
 ## Part 3: Configure Kiro to Use MCP Servers
 
 ### Step 1: Create Kiro Configuration File
@@ -128,19 +110,10 @@ Add this configuration to `~/.kiro/mcp-config.json`:
       "command": "python",
       "args": ["-m", "aws_knowledge_mcp_server"],
       "env": {}
-    },
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-      "env": {
-        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY_HERE"
-      }
     }
   }
 }
 ```
-
-**Important**: Replace `YOUR_BRAVE_API_KEY_HERE` with your actual Brave Search API key.
 
 ### Step 3: Verify MCP Server Configuration
 
@@ -208,15 +181,7 @@ You: "Is AWS Bedrock available in eu-west-1?"
 Kiro will check regional availability using the AWS Knowledge MCP server.
 ```
 
-#### 4. Web Search for Latest Information
-
-```
-You: "What are the latest AWS announcements from re:Invent 2024?"
-
-Kiro will use Brave Search to find current information.
-```
-
-#### 5. Code Generation
+#### 4. Code Generation
 
 ```
 You: "Write a Python Lambda function that processes S3 events"
@@ -224,7 +189,7 @@ You: "Write a Python Lambda function that processes S3 events"
 Kiro will generate code with proper error handling and best practices.
 ```
 
-#### 6. AWS CLI Commands
+#### 5. AWS CLI Commands
 
 ```
 You: "How do I list all EC2 instances in my account?"
@@ -289,7 +254,6 @@ What AWS services should I use?"
 
 - AWS Documentation server: For official AWS docs and API references
 - AWS Knowledge server: For best practices and architecture patterns
-- Brave Search: For latest news, blog posts, and community content
 
 ### 5. Security Considerations
 
@@ -322,12 +286,6 @@ aws sts get-caller-identity
 # Reconfigure if needed
 aws configure
 ```
-
-### Brave Search Not Working
-
-- Verify API key is correct in `~/.kiro/mcp-config.json`
-- Check API quota at https://brave.com/search/api/
-- Ensure the key is not expired
 
 ## Part 8: Common Use Cases
 

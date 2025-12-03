@@ -1,10 +1,10 @@
-# Getting Started with Kiro CLI and MCP Servers
+# Getting Started with Kiro CLI and AWS MCP Servers
 
 [![AWS](https://img.shields.io/badge/AWS-Kiro%20CLI-FF9900?style=flat&logo=amazon-aws)](https://aws.amazon.com/kiro/)
 [![MCP](https://img.shields.io/badge/MCP-Protocol-blue?style=flat)](https://modelcontextprotocol.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> A comprehensive guide to installing and using Kiro CLI with AWS Documentation, AWS Knowledge, and Brave Search MCP servers.
+> A comprehensive guide to installing and using Kiro CLI with AWS Documentation and AWS Knowledge MCP servers.
 
 ## 📋 Table of Contents
 
@@ -30,16 +30,13 @@
 
 - ✅ Install and configure Kiro CLI
 - ✅ Set up AWS Documentation and AWS Knowledge MCP servers
-- ✅ Integrate Brave Search for web queries
 - ✅ Use Kiro effectively for AWS architecture and development
 
 ## Prerequisites
 
 - **OS**: macOS, Linux, or Windows with WSL2
 - **Python**: 3.8 or higher
-- **Node.js**: 18 or higher
 - **AWS Account**: For AWS-specific features
-- **Brave Search API Key**: [Get one here](https://brave.com/search/api/) (free tier available)
 
 ## Installation
 
@@ -87,14 +84,6 @@ cd aws-knowledge-mcp-server
 pip install -e .
 ```
 
-#### 3. Brave Search MCP Server
-
-```bash
-npm install -g @modelcontextprotocol/server-brave-search
-```
-
-Get your Brave Search API key at [brave.com/search/api](https://brave.com/search/api/)
-
 ## Configuration
 
 ### Create MCP Configuration File
@@ -118,19 +107,10 @@ nano ~/.kiro/mcp-config.json
       "command": "python",
       "args": ["-m", "aws_knowledge_mcp_server"],
       "env": {}
-    },
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-      "env": {
-        "BRAVE_API_KEY": "YOUR_BRAVE_API_KEY_HERE"
-      }
     }
   }
 }
 ```
-
-**⚠️ Important**: Replace `YOUR_BRAVE_API_KEY_HERE` with your actual API key.
 
 ### Configure AWS Credentials
 
@@ -192,12 +172,6 @@ kiro-cli --help
 "Write a Python Lambda function that processes S3 events with error handling"
 ```
 
-#### 🔍 Web Search
-
-```
-"What are the latest AWS announcements from re:Invent 2024?"
-```
-
 #### 💰 Cost Optimization
 
 ```
@@ -217,7 +191,7 @@ kiro-cli --help
 - **Be specific**: "Compare DynamoDB and Aurora for high-traffic e-commerce" vs "Tell me about databases"
 - **Provide context**: Include requirements, scale, and constraints
 - **Iterate**: Refine solutions based on responses
-- **Use appropriate MCP servers**: AWS docs for official info, Brave for latest news
+- **Use AWS MCP servers**: For official documentation, API references, and best practices
 
 ### ❌ Don'ts
 
@@ -250,12 +224,6 @@ aws sts get-caller-identity
 # Reconfigure
 aws configure
 ```
-
-### Brave Search Issues
-
-- Verify API key in `~/.kiro/mcp-config.json`
-- Check quota at [brave.com/search/api](https://brave.com/search/api/)
-- Ensure key is not expired
 
 ## AWS Service Quick Reference
 
@@ -307,7 +275,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - AWS for creating Kiro CLI
 - The MCP community for the protocol specification
-- Brave Search for API access
 
 ---
 
